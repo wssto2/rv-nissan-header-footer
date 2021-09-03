@@ -125,7 +125,7 @@
                     <div class="meganav-container">
                         <div class="c_010D-meganav">
 						
-                            <ul class="categories">
+                            <ul class="categories" v-if="mainNavigation && mainNavigation[0] && mainNavigation[0].children">
 	
                                 <li v-for="(vehicleType, vehicleTypeIndex) in mainNavigation[0].children" :key="vehicleTypeIndex" @click="toggleVehicleType(vehicleTypeIndex)"><a :class="[{'active' : vehicleTypeIndex === vehicleTypeActive}]" :href="vehicleType.url">{{vehicleType.title}}</a></li>
 	
