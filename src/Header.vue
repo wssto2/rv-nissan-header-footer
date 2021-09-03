@@ -217,10 +217,20 @@
 
     export default {
         name: 'Header',
+
+        props: {
+            url: {
+                type: String
+            }
+        },
         
         created() {
             if ("HEADER_FOOTER_SETTINGS" in window) {
-                this.fetchNavigation(window.HEADER_FOOTER_SETTINGS);
+                this.fetchNavigation(window.HEADER_FOOTER_SETTINGS.apiUri);
+            } else {
+                if (this.url) {
+                    this.fetchNavigation(this.url);
+                }
             }
 
             window.addEventListener('click', this.del);
@@ -244,7 +254,7 @@
         },
 
         methods: {
-            fetchNavigation({apiUri}) {
+            fetchNavigation(apiUri) {
                 axios.get(apiUri)
                     .then((response) => {
                         this.basicInformation = response.data;

@@ -100,9 +100,19 @@
     export default {
         name: "Footer",
 
+        props: {
+            url: {
+                type: String
+            }
+        },
+
         created() {
             if ("HEADER_FOOTER_SETTINGS" in window) {
-                this.fetchNavigation(window.HEADER_FOOTER_SETTINGS);
+                this.fetchNavigation(window.HEADER_FOOTER_SETTINGS.apiUri);
+            } else {
+                if (this.url) {
+                    this.fetchNavigation(this.url);
+                }
             }
         },
 
@@ -118,7 +128,7 @@
         },
 
         methods: {
-            fetchNavigation({apiUri}) {
+            fetchNavigation(apiUri) {
                 axios.get(apiUri)
                     .then((response) => {
                         this.basicInformation = response.data;
