@@ -4,13 +4,16 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "buildOld": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+      "build": "npm run build:umd & npm run build:es & npm run build:unpkg",
+      "build:umd": "rollup --config build/rollup.config.js --format umd --file dist/main.umd.js",
+      "build:es": "rollup --config build/rollup.config.js --format es --file dist/main.esm.js",
+      "build:unpkg": "rollup --config build/rollup.config.js --format iife --file dist/main.min.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "core-js": "^3.14.0",
-    "purgecss-webpack-plugin": "^4.0.3",
     "vue": "^2.6.14"
   },
   "devDependencies": {
@@ -20,7 +23,18 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.14"
+      "purgecss-webpack-plugin": "^4.0.3",
+    "mini-css-extract-plugin": "^2.2.2",
+    "vue-template-compiler": "^2.6.14",
+
+      "rollup": "^1.17.0",
+      "rollup-plugin-css-bundle": "^1.0.4",
+      "rollup-plugin-uglify": "^6.0.4",
+      "rollup-plugin-vue": "^5.0.1",
+      "@rollup/plugin-buble": "^0.21.3",
+      "@rollup/plugin-commonjs": "^11.1.0",
+      "@rollup/plugin-image": "^2.0.6",
+      "@rollup/plugin-node-resolve": "^13.0.0"
   },
   "eslintConfig": {
     "root": true,
@@ -40,5 +54,11 @@
     "> 1%",
     "last 2 versions",
     "not dead"
-  ]
+  ],
+    "main": "dist/main.umd.js",
+    "module": "dist/main.esm.js",
+    "unpkg": "dist/main.min.js",
+    "browser": {
+        "./sfc": "src/RnaContactForm.vue"
+    }
 }
