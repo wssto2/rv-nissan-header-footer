@@ -1,7 +1,15 @@
 {
-  "name": "rv-nissan-header-footer",
+  "name": "@wssto2/rv-nissan-header-footer",
   "version": "1.0.0",
   "private": false,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/wssto2/rv-nissan-header-footer.git"
+    },
+    "bugs": {
+        "url": "https://github.com/wssto2/rv-nissan-header-footer/issues"
+    },
+    "homepage": "https://github.com/wssto2/rv-nissan-header-footer",
   "scripts": {
     "serve": "vue-cli-service serve",
     "buildOld": "vue-cli-service build",
