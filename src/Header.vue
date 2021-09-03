@@ -68,11 +68,11 @@
 
                         <div class="burger-menu-wrapper">
                             
-                            <div class="live-chat-container">
+                            <div v-if="livechatUrl" class="live-chat-container">
                                 
                                 <div class="live-chat-tooltip">Live chat</div>
 
-                                    <a :href="basicInformation.meta.livechat_url" target="_blank" class="c_095A-live-chat">Live chat</a>
+                                    <a :href="livechatUrl" target="_blank" class="c_095A-live-chat">Live chat</a>
 
                                 </div>
                                 <div class="burger-container">
@@ -197,7 +197,7 @@
 		
         </div>
     </div>
-    <div class="title liveChatScript">
+    <div class="title liveChatScript" v-if="livechatUrl">
 
         <div class="c_095A c_095A-modernised" data-script-url="https://c.la1-c1-lon.salesforceliveagent.com/content/g/js/37.0/deployment.js" data-live-chat-init-url="https://d.la1-c1-lon.salesforceliveagent.com/chat" data-live-chat-init-param1="572b0000000TYXI" data-live-chat-init-param2="00Db0000000cZvn" data-live-chat-button-id="573b0000000TYYY" data-live-chat-tooltip="Live chat" data-live-chat-custom-detail="{&quot;Brand&quot;:&quot;Nissan&quot;,&quot;caseSubType&quot;:&quot;Nissan Site&quot;}">
 				<script data-component="c_095A" type="text/x-handlebars-template">
@@ -250,6 +250,12 @@
                 basicInformation: [],
                 mainNavigation: [],
                 sideNavigation: []
+            }
+        },
+
+        computed: {
+            livechatUrl() {
+                return this.basicInformation && this.basicInformation.meta && this.basicInformation.meta.livechat_url;
             }
         },
 

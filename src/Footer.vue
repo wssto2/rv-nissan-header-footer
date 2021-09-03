@@ -82,7 +82,7 @@
                                         
                                 </ul>
 
-                                <p class="footer-copyright">{{basicInformation.meta.footer_trademark}}</p>
+                                <p class="footer-copyright">{{ footerTrademark }}</p>
                             </div>
                         </div>
                     </div>
@@ -124,6 +124,12 @@
                 socialNavigation: [],
                 optionsNavigation: [],
                 legalNavigation: []
+            }
+        },
+
+        computed: {
+            footerTrademark() {
+                return this.basicInformation && this.basicInformation.meta && this.basicInformation.meta.footer_trademark
             }
         },
 
