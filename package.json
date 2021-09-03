@@ -10,6 +10,9 @@
         "url": "https://github.com/wssto2/rv-nissan-header-footer/issues"
     },
     "homepage": "https://github.com/wssto2/rv-nissan-header-footer",
+    "publishConfig": {
+        "access": "public"
+    },
   "scripts": {
     "serve": "vue-cli-service serve",
     "buildOld": "vue-cli-service build",
