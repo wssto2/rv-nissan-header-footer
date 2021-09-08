@@ -131,7 +131,7 @@
 	
                             </ul>
 
-                            <div class="categories-wrapper">
+                            <div class="categories-wrapper" v-if="mainNavigation && mainNavigation[0] && mainNavigation[0].children && mainNavigation[0].children[0].children">
 	
                                 <div :class="['vehicles-container', {'active' : vehicleTypeActive === 0}]" data-tabname="category-0">
 						
@@ -271,8 +271,7 @@
             toggleVehicle(index){
                 if(index === 0){
                     this.meganavActive = true;
-                    document.body.style.overflowY = "hidden";
-                    document.html.style.overflowY = "hidden";
+                    document.body.classList.add("hideOverflow");
                     return true;
                 }
             },
@@ -281,16 +280,13 @@
                     this.meganavActive = false;
                 } else if(this.meganavActive && !this.sidebarActive){
                     this.meganavActive = false;
-                    document.body.style.overflowY = "auto";
-                    document.html.style.overflowY = "auto";
+                    document.body.classList.remove("hideOverflow");
                 } else if(!this.sidebarActive){
                     this.sidebarActive = true;
-                    document.body.style.overflowY = "hidden";
-                    document.html.style.overflowY = "hidden";
+                    document.body.classList.add("hideOverflow");
                 } else {
                     this.sidebarActive = false;
-                    document.body.style.overflowY = "auto";
-                    document.html.style.overflowY = "auto";
+                    document.body.classList.remove("hideOverflow");
                 }
             },
             mobileNonVehicleDropdown(index) {
