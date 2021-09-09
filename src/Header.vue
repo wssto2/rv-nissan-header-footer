@@ -304,6 +304,4 @@
     }
 </script>
 
-<style scoped>
-    @import './assets/css/nissan.css';
-</style>
+<style scoped src="./assets/css/nissan_min.css"></style>
