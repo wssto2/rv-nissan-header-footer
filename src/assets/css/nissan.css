@@ -23237,3 +23237,7 @@ html.js .c_129.form-in-popup-custom.animate-in~.modal-overlay.form-in-popup-cust
 .logo-container .st0 {
     fill:#FFFFFF;
 }
+
+.hideOverflow {
+    overflow-y: hidden;
+}
