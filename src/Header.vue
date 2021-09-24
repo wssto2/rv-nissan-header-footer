@@ -12,7 +12,7 @@
 
                     <div class="wrapper">
                         
-                        <a href="/" class="logo-container" role="logo" aria-label="logo"> <picture class="logo svg js-c_010D-svg-inline">
+                        <a v-if="basicInformation" :href="basicInformation.site_url" class="logo-container" role="logo" aria-label="logo"> <picture class="logo svg js-c_010D-svg-inline">
                             <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo.svg" media="screen and (min-width: 960px)">
                             <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo.svg" media="print">
                             <img src="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo-text.svg" alt=""><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 504 421.7" style="enable-background:new 0 0 504 421.7;" xml:space="preserve" class="desktop">
@@ -88,11 +88,11 @@
 							
                                     <ul class="primary">
 
-                                        <li :class="[{'has-meganav' : mainIndex === 0}, {'has-menu' : mainIndex !== 0}, {'js-c_010D-dropdown-off-screen' : mainIndex === 3}, {'js-c_010D-accordion-open' : mainIndex === mobileNonVehicleActive}]" v-for="(main, mainIndex) in mainNavigation" :key="mainIndex" @click="toggleVehicle(mainIndex); mobileNonVehicleDropdown(mainIndex);"><a>{{main.title}}</a>
+                                        <li :class="[{'has-meganav' : mainIndex === 0}, {'has-menu' : mainIndex !== 0}, {'js-c_010D-dropdown-off-screen' : mainIndex === 3}, {'js-c_010D-accordion-open' : mainIndex === mobileNonVehicleActive}]" v-for="(main, mainIndex) in mainNavigation" :key="mainIndex" @click="toggleVehicle(mainIndex); mobileNonVehicleDropdown(mainIndex);"><a v-if="main.active === 1">{{main.title}}</a>
 
-                                            <ul v-if="mainIndex !== 0" class="dropdown">
+                                            <ul v-if="mainIndex !== 0 && main.active === 1" class="dropdown">
 
-                                                <li v-for="(dropdown, dropdownIndex) in main.children" :key="dropdownIndex"><a :href="dropdown.url">{{dropdown.title}}</a></li>
+                                                <li v-for="(dropdown, dropdownIndex) in main.children" :key="dropdownIndex"><a :href="dropdown.url" v-if="dropdown.active === 1">{{dropdown.title}}</a></li>
                                                         
                                             </ul>
 
@@ -112,7 +112,7 @@
 		
                                         <ul class="sidebar" style="margin-bottom: 40px;">
                                             
-                                            <li v-for="(sidebar, sidebarIndex) in sideNavigation" :key="sidebarIndex"><a :href="sidebar.url" :target="sidebar.target">{{sidebar.title}}</a></li>
+                                            <li v-for="(sidebar, sidebarIndex) in sideNavigation" :key="sidebarIndex"><a :href="sidebar.url" :target="sidebar.target" v-if="sidebar.active === 1">{{sidebar.title}}</a></li>
                                             
                                         </ul>
 
@@ -127,7 +127,7 @@
 						
                             <ul class="categories" v-if="mainNavigation && mainNavigation[0] && mainNavigation[0].children">
 	
-                                <li v-for="(vehicleType, vehicleTypeIndex) in mainNavigation[0].children" :key="vehicleTypeIndex" @click="toggleVehicleType(vehicleTypeIndex)"><a :class="[{'active' : vehicleTypeIndex === vehicleTypeActive}]" :href="vehicleType.url">{{vehicleType.title}}</a></li>
+                                <li v-for="(vehicleType, vehicleTypeIndex) in mainNavigation[0].children" :key="vehicleTypeIndex" @click="toggleVehicleType(vehicleTypeIndex)"><a :class="[{'active' : vehicleTypeIndex === vehicleTypeActive}]" :href="vehicleType.url" v-if="vehicleType.active === 1">{{vehicleType.title}}</a></li>
 	
                             </ul>
 
@@ -139,13 +139,13 @@
 								
 										<a v-for="(vehicleAll, vehicleAllIndex) in mainNavigation[0].children[0].children" :key="vehicleAllIndex" class="vehicle-block" :href="vehicleAll.url" :target="vehicleAll.target">
 											
-												<picture> 
+												<picture v-if="vehicleAll.active === 1"> 
 													
 														<img :src="vehicleAll.icon" :alt="vehicleAll.title">
 													
                                                 </picture>
 											
-											<div class="model-details">
+											<div class="model-details" v-if="vehicleAll.active === 1">
 
 												<label>{{vehicleAll.title}}</label>
 
@@ -155,7 +155,7 @@
                                     </div>
 
                                 <div class="more-vehicles">
-                                    <a class="chevron-right" href="/vozila/nova-vozila.html">SVA VOZILA</a>
+                                    <a v-if="basicInformation.meta.all_vehicles" class="chevron-right" :href="basicInformation.meta.all_vehicles_url">{{basicInformation.meta.all_vehicles}}</a>
                                 </div>
                             
                             </div>
@@ -182,7 +182,7 @@
                                     </div> 
 
                                 <div class="more-vehicles">
-                                    <a class="chevron-right" href="/paleta/elektricna-vozila.html">SVA ELEKTRIČNA VOZILA</a>
+                                    <a v-if="basicInformation.meta.all_electric_vehicles" class="chevron-right" :href="basicInformation.meta.all_electric_vehicles_url">{{basicInformation.meta.all_electric_vehicles}}</a>
                                 </div>
                             
                             </div>
@@ -305,3 +305,4 @@
 </script>
 
 <style scoped src="./assets/css/nissan_min.css"></style>
+<style>.hideOverflow{overflow-y:hidden}</style>

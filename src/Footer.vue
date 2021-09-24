@@ -6,15 +6,15 @@
                         <div class="grid-row">
                             <div class="col-12">
                                
-                                <div v-for="(item, itemIndex) in mainNavigation" :key="itemIndex" class="footer-container col-3" @click.prevent="toggle(itemIndex)">
-                                    <h2 :class="['footer-heading', {'is-open': isVisible(itemIndex)}]">
+                                <div v-for="(item, itemIndex) in mainNavigation" :key="itemIndex" class="footer-container col-3">
+                                    <h2 :class="['footer-heading', {'is-open': isVisible(itemIndex)}]" v-if="item.active === 1" @click.prevent="toggle(itemIndex)">
                                         <a class="accordionToggle"><span></span></a> 
                                         <span>{{ item.title }}</span>
                                     </h2>
                                     <ul>
 
                                         <li :class="[{'is-visible': isVisible(itemIndex)}]" v-for="(child, childIndex) in item.children" :key="childIndex">
-                                                <a :title="child.title" :href="child.url" :target="child.target"><span>{{ child.title }}</span></a>
+                                                <a  v-if="child.active === 1" :title="child.title" :href="child.url" :target="child.target"><span>{{ child.title }}</span></a>
                                                 <div v-if="child.meta.subheader" class="subheadWrapper">
                                                     <ul>
                                                         <li class="subheader" :class="[{'is-visible': isVisible(itemIndex)}]">
@@ -26,7 +26,7 @@
                                                         </li>
                                                         
                                                         <li :class="[{'is-visible': isVisible(itemIndex)}]" v-for="(subChild, subChildIndex) in item.children[1].children" :key="subChildIndex">
-                                                            <a :title="subChild.title" :href="subChild.url" :target="subChild.target" ><span>{{ subChild.title }}</span></a>
+                                                            <a v-if="subChild.active === 1" :title="subChild.title" :href="subChild.url" :target="subChild.target" ><span>{{ subChild.title }}</span></a>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -70,7 +70,7 @@
 
                             <ul class="footer-options">
                 
-                                <li v-for="(option, optionsIndex) in optionsNavigation.schema" :key="optionsIndex"><a :href="option.url" title="">{{option.title}}</a></li>
+                                <li v-for="(option, optionsIndex) in optionsNavigation.schema" :key="optionsIndex"><a v-if="option.active === 1" :href="option.url" title="">{{option.title}}</a></li>
                 
                             </ul>
 
@@ -78,7 +78,7 @@
                                 
                                 <ul>
                                     
-                                    <li v-for="(legal, legalIndex) in legalNavigation.schema" :key="legalIndex"><a :href="legal.url" title="">{{legal.title}}</a></li>
+                                    <li v-for="(legal, legalIndex) in legalNavigation.schema" :key="legalIndex"><a v-if="legal.active === 1" :href="legal.url" title="">{{legal.title}}</a></li>
                                         
                                 </ul>
 
