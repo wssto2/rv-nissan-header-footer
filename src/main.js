@@ -6,8 +6,8 @@ Vue.config.productionTip = false
 
 new Vue({
   render: h => h(Header),
-}).$mount('#rv-renault-header-v1')
+}).$mount('#rna-header')
 
 new Vue({
   render: h => h(Footer),
-}).$mount('#rv-renault-footer-v1')
+}).$mount('#rna-footer')
