@@ -223,6 +223,7 @@
                 type: String
             }
         },
+
         
         created() {
             if ("HEADER_FOOTER_SETTINGS" in window) {
