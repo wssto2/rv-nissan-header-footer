@@ -67,10 +67,5 @@
     "last 2 versions",
     "not dead"
   ],
-  "main": "dist/main.umd.js",
-  "module": "dist/main.esm.js",
-  "unpkg": "dist/main.min.js",
-  "browser": {
-    "./sfc": "src/RnaContactForm.vue"
-  }
+  "unpkg": "dist/js/app.js"
 }
