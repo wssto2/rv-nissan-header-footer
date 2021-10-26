@@ -213,6 +213,7 @@
 </template>
 
 <script>
+
     import axios from 'axios';
 
     export default {
@@ -224,7 +225,6 @@
             }
         },
 
-        
         created() {
             if ("HEADER_FOOTER_SETTINGS" in window) {
                 this.fetchNavigation(window.HEADER_FOOTER_SETTINGS.apiUri);
