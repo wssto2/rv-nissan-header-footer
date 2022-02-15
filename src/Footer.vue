@@ -13,23 +13,8 @@
                                     </h2>
                                     <ul>
 
-                                        <li :class="[{'is-visible': isVisible(itemIndex)}]" v-for="(child, childIndex) in item.children" :key="childIndex">
+                                        <li :class="[{'is-visible': isVisible(itemIndex)}, {'subheader': child.meta.subheader}]" v-for="(child, childIndex) in item.children" :key="childIndex">
                                                 <a  v-if="child.active === 1" :title="child.title" :href="child.url" :target="child.target"><span>{{ child.title }}</span></a>
-                                                <div v-if="child.meta.subheader" class="subheadWrapper">
-                                                    <ul>
-                                                        <li class="subheader" :class="[{'is-visible': isVisible(itemIndex)}]">
-                                                            <span>________________</span>
-                                                        </li>
-                                            
-                                                        <li class="subheader" :class="[{'is-visible': isVisible(itemIndex)}]">
-                                                            <span>{{ child.title }}</span>
-                                                        </li>
-                                                        
-                                                        <li :class="[{'is-visible': isVisible(itemIndex)}]" v-for="(subChild, subChildIndex) in item.children[1].children" :key="subChildIndex">
-                                                            <a v-if="subChild.active === 1" :title="subChild.title" :href="subChild.url" :target="subChild.target" ><span>{{ subChild.title }}</span></a>
-                                                        </li>
-                                                    </ul>
-                                                </div>
                                         </li>
 
                                     </ul>
@@ -165,3 +150,8 @@
 </script>
 
 <style scoped src="./assets/css/nissan_min.css"></style>
+<style scoped>
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/small.min.css");
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/medium.min.css") screen and (min-width: 36.3125em);
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/large.min.css") screen and (min-width: 60em);
+</style>
