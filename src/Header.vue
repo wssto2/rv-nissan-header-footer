@@ -291,7 +291,11 @@
                 }
             },
             mobileNonVehicleDropdown(index) {
-                this.mobileNonVehicleActive = index;
+                if(this.mobileNonVehicleActive === index){
+                    this.mobileNonVehicleActive = 0;
+                } else {
+                    this.mobileNonVehicleActive = index;
+                }
             },
             toggleVehicleType(index) {
                 this.vehicleTypeActive = index;
@@ -305,5 +309,16 @@
     }
 </script>
 
-<style scoped src="./assets/css/nissan_min.css"></style>
+<style scoped>
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/small.min.css");
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/medium.min.css") screen and (min-width: 36.3125em);
+    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/large.min.css") screen and (min-width: 60em);
+    body .wrapper .logo-container .logo svg.desktop, 
+    body .wrapper .logo-container .logo svg.mobile {
+        filter: invert(0);
+    }
+    .c_010D .primary .has-menu:last-of-type .dropdown {
+        right: 0;
+    }
+</style>
 <style>.hideOverflow{overflow-y:hidden}</style>
