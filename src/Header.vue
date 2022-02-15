@@ -112,7 +112,7 @@
 		
                                         <ul class="sidebar" style="margin-bottom: 40px;">
                                             
-                                            <li v-for="(sidebar, sidebarIndex) in sideNavigation" :key="sidebarIndex"><a :href="sidebar.url" :target="sidebar.target" v-if="sidebar.active === 1">{{sidebar.title}}</a></li>
+                                            <li v-for="(sidebar, sidebarIndex) in sideNavigation" :key="sidebarIndex" :class="[{'margin-bottom-sidebar' : sidebar.meta.marginBottom}]"><a :href="sidebar.url" :target="sidebar.target" v-if="sidebar.active === 1">{{sidebar.title}}</a></li>
                                             
                                         </ul>
 
@@ -320,5 +320,11 @@
     .c_010D .primary .has-menu:last-of-type .dropdown {
         right: 0;
     }
+    @media screen and (min-width: 960px){
+        .margin-bottom-sidebar{
+            margin-bottom: 18px;
+        }
+    }
+    
 </style>
 <style>.hideOverflow{overflow-y:hidden}</style>
