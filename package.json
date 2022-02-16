@@ -1,6 +1,6 @@
 {
   "name": "@wssto2/rv-nissan-header-footer",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "private": false,
   "repository": {
     "type": "git",
@@ -17,7 +17,7 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-      "fetchNissanStyles": "node fetch_nissan_styles.js",
+    "fetchNissanStyles": "node fetch_nissan_styles.js",
     "buildOld": "npm run build:umd & npm run build:es & npm run build:unpkg",
     "buildOld:umd": "rollup --config build/rollup.config.js --format umd --file dist/main.umd.js",
     "buildOld:es": "rollup --config build/rollup.config.js --format es --file dist/main.esm.js",
