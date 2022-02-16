@@ -309,13 +309,14 @@
     }
 </script>
 
+<style scoped src="./assets/css/fonts-latin-extended.min.css"></style>
+<style scoped src="./assets/css/small.min.css"></style>
+<style scoped src="./assets/css/medium.min.css"></style>
+<style scoped src="./assets/css/large.min.css"></style>
 <style scoped>
-    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/small.min.css");
-    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/medium.min.css") screen and (min-width: 36.3125em);
-    @import url("//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/large.min.css") screen and (min-width: 60em);
     .wrapper .logo-container .logo svg.desktop, 
     .wrapper .logo-container .logo svg.mobile {
-        filter: invert(0);
+        filter: invert(0) !important;
     }
     .c_010D .primary .has-menu:last-of-type .dropdown {
         right: 0;
