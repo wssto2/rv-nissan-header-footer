@@ -309,10 +309,7 @@
     }
 </script>
 
-<style scoped src="./assets/css/fonts-latin-extended.min.css"></style>
-<style scoped src="./assets/css/small.min.css"></style>
-<style scoped src="./assets/css/medium.min.css"></style>
-<style scoped src="./assets/css/large.min.css"></style>
+<style scoped src="./assets/css/base.css"></style>
 <style scoped>
     .wrapper .logo-container .logo svg.desktop, 
     .wrapper .logo-container .logo svg.mobile {
