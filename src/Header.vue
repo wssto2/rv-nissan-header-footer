@@ -133,11 +133,11 @@
 
                             <div class="categories-wrapper" v-if="mainNavigation && mainNavigation[0] && mainNavigation[0].children && mainNavigation[0].children[0].children">
 	
-                                <div :class="['vehicles-container', {'active' : vehicleTypeActive === 0}]" data-tabname="category-0">
+                                <div v-for="(subNavigation, index) in mainNavigation[0].children" :class="['vehicles-container', { 'active': vehicleTypeActive === index }]" :data-tabname="'category-' + index" :key="index">
 						
                                     <div class="vehicle-block-wrapper">
 								
-										<a v-for="(vehicleAll, vehicleAllIndex) in mainNavigation[0].children[0].children" :key="vehicleAllIndex" class="vehicle-block" :href="vehicleAll.url" :target="vehicleAll.target">
+										<a v-for="(vehicleAll, vehicleAllIndex) in subNavigation.children" :key="vehicleAllIndex" class="vehicle-block" :href="vehicleAll.url" :target="vehicleAll.target">
 											
 												<picture v-if="vehicleAll.active === 1"> 
 													
@@ -155,37 +155,13 @@
                                     </div>
 
                                 <div class="more-vehicles">
-                                    <a v-if="basicInformation.meta.all_vehicles" class="chevron-right" :href="basicInformation.meta.all_vehicles_url">{{basicInformation.meta.all_vehicles}}</a>
+                                    <a v-if="subNavigation.meta.more" class="chevron-right" :href="basicInformation.meta[subNavigation.meta.more + '_url']">
+                                        {{ basicInformation.meta[subNavigation.meta.more] }}
+                                    </a>
                                 </div>
                             
                             </div>
 					
-                            <div :class="['vehicles-container', {'active' : vehicleTypeActive === 1}]" data-tabname="category-1">
-                                
-                                    <div class="vehicle-block-wrapper">
-                                        
-                                        <a v-for="(vehicleAll, vehicleAllIndex) in mainNavigation[0].children[1].children" :key="vehicleAllIndex" class="vehicle-block" :href="vehicleAll.url" :target="vehicleAll.target">
-											
-												<picture> 
-													
-														<img :src="vehicleAll.icon" :alt="vehicleAll.title">
-													
-                                                </picture>
-											
-											<div class="model-details">
-
-												<label>{{vehicleAll.title}}</label>
-
-											</div>
-										</a>
-                                            
-                                    </div> 
-
-                                <div class="more-vehicles">
-                                    <a v-if="basicInformation.meta.all_electric_vehicles" class="chevron-right" :href="basicInformation.meta.all_electric_vehicles_url">{{basicInformation.meta.all_electric_vehicles}}</a>
-                                </div>
-                            
-                            </div>
 				
                         </div>
 
