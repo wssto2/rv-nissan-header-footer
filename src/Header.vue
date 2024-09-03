@@ -6,16 +6,16 @@
         <div itemscope="itemscope" itemtype="http://schema.org/WPHeader">
             <div class="noindex">
                 
-                <header class="c_010D c_010D-theme-dark c_010D-logo-small live-chat-available" role="navigation" data-initiated="true" style="margin-bottom: 50.6667px;" data-height-set-by-c_046c="">
+                <header class="c_010D c_010D-theme-dark c_010D-logo-small" role="navigation" data-initiated="true" style="margin-bottom: 50.6667px;" data-height-set-by-c_046c="">
                     <div class="c_010D-breakpoint-test"></div>
                     <div class="c_010D-overlay"></div>
 
                     <div class="wrapper">
                         
                         <a v-if="basicInformation" :href="basicInformation.site_url" class="logo-container" role="logo" aria-label="logo"> <picture class="logo svg js-c_010D-svg-inline">
-                            <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo.svg" media="screen and (min-width: 960px)">
-                            <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo.svg" media="print">
-                            <img src="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/21.09.2.NISSAN-18/common-assets/img/svg/nissan-next-logo-text.svg" alt=""><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 504 421.7" style="enable-background:new 0 0 504 421.7;" xml:space="preserve" class="desktop">
+                            <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/img/svg/nissan-next-logo.svg" media="screen and (min-width: 960px)">
+                            <source srcset="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/img/svg/nissan-next-logo.svg" media="print">
+                            <img src="//libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/img/svg/nissan-next-logo-text.svg" alt=""><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 504 421.7" style="enable-background:new 0 0 504 421.7;" xml:space="preserve" class="desktop">
                             
                             <g id="Layer_1_1_">
                                 <g id="Nissan_Badge_1_">
@@ -88,7 +88,7 @@
 							
                                     <ul class="primary">
 
-                                        <li :class="[{'has-meganav' : mainIndex === 0}, {'has-menu' : mainIndex !== 0}, {'js-c_010D-dropdown-off-screen' : mainIndex === 3}, {'js-c_010D-accordion-open' : mainIndex === mobileNonVehicleActive}]" v-for="(main, mainIndex) in mainNavigation" :key="mainIndex" @click="toggleVehicle(mainIndex); mobileNonVehicleDropdown(mainIndex);"><a v-if="main.active === 1">{{main.title}}</a>
+                                        <li :class="[{'has-meganav' : mainIndex === 0}, {'has-menu' : mainIndex !== 0}, {'js-c_010D-dropdown-off-screen' : mainIndex === 3}, {'js-c_010D-accordion-open' : mainIndex === mobileNonVehicleActive}, {'focus-active' : mainIndex === mobileNonVehicleActive}]" @mouseover="hoveredIndex = mainIndex" @mouseleave="hoveredIndex = null" v-for="(main, mainIndex) in mainNavigation" :key="mainIndex" @click="toggleVehicle(mainIndex); mobileNonVehicleDropdown(mainIndex);"><a :class="[{'primary-nav-opened' : mainIndex === mobileNonVehicleActive || hoveredIndex === mainIndex}]" v-if="main.active === 1">{{main.title}}</a>
 
                                             <ul v-if="mainIndex !== 0 && main.active === 1" class="dropdown">
 
@@ -226,7 +226,8 @@
                 vehicleTypeActive: 0,
                 basicInformation: [],
                 mainNavigation: [],
-                sideNavigation: []
+                sideNavigation: [],
+                hoveredIndex: null
             }
         },
 
@@ -295,6 +296,9 @@
     .c_010D .primary .has-menu:last-of-type .dropdown {
         right: 0;
     }
+    a {
+        cursor: pointer;
+    }
     @media screen and (min-width: 960px){
         .margin-bottom-sidebar{
             margin-bottom: 18px;
@@ -302,4 +306,4 @@
     }
     
 </style>
-<style>.hideOverflow{overflow-y:hidden}</style>
+<style>.hideOverflow{overflow-y:hidden;}</style>

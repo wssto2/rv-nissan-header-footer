@@ -25,10 +25,10 @@ if (!fs.existsSync(downloadedDirectory)){
  * CSS datoteke koje treba preuzeti
  */
 let urls = [
-    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/fonts/fonts-latin-extended.min.css',
-    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/small.min.css',
-    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/medium.min.css',
-    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v3/22.02.2.NISSAN-19/common-assets/css/large.min.css'
+    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/css/fonts/fonts-latin-extended.min.css',
+    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/css/small.min.css',
+    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/css/medium.min.css',
+    'https://libs-europe.nissan-cdn.net/etc/designs/nissan_next_v4/24.08.32.NISSAN-6/common-assets/css/large.min.css'
 ];
 
 urls.forEach((url) => {
