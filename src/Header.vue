@@ -92,7 +92,12 @@
 
                                             <ul v-if="mainIndex !== 0 && main.active === 1" class="dropdown">
 
-                                                <li v-for="(dropdown, dropdownIndex) in main.children" :key="dropdownIndex"><a :href="dropdown.url" v-if="dropdown.active === 1">{{dropdown.title}}</a></li>
+                                                <li v-for="(dropdown, dropdownIndex) in main.children" :key="dropdownIndex">
+                                                    <a :href="dropdown.url" v-if="dropdown.active === 1">{{dropdown.title}}</a>
+                                                    <a :href="dropdown.url" v-if="dropdown.active === 1 && dropdown.meta.image">
+                                                        <img :src="dropdown.meta.image" :alt="dropdown.title">
+                                                    </a>
+                                                </li>
                                                         
                                             </ul>
 
